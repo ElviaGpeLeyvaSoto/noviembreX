@@ -120,8 +120,14 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\CiudadanoController.cs" />
+    <Compile Include="Controllers\ComprobanteDomicilioController.cs" />
+    <Compile Include="Controllers\DocumentoNacionalidadController.cs" />
     <Compile Include="Controllers\EstadoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ModuloController.cs" />
+    <Compile Include="Controllers\MunicipioController.cs" />
+    <Compile Include="Controllers\TramiteController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -208,11 +214,17 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Bienvenida.cshtml" />
     <Content Include="Views\Usuario\Index.cshtml" />
+    <Content Include="Views\Estado\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
-    <Folder Include="Views\Estado\" />
+    <Folder Include="Views\Ciudadano\" />
+    <Folder Include="Views\ComprobanteDomicilio\" />
+    <Folder Include="Views\DocumentoNacionalidad\" />
+    <Folder Include="Views\Modulo\" />
+    <Folder Include="Views\Municipio\" />
+    <Folder Include="Views\Tramite\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

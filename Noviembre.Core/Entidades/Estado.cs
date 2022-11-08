@@ -21,13 +21,15 @@ namespace Noviembre.Core.Entidades
                 Conexion conexion = new Conexion();
                 if (conexion.OpenConnection())
                 {
-                    string query = "SELECT id, nombre FROM estado;";
+                    string query = "SELECT idestado, nombre FROM estado;";
+
                     MySqlCommand command = new MySqlCommand(query, conexion.connection);
+
                     MySqlDataReader dataReader = command.ExecuteReader();
                     while (dataReader.Read())
                     {
                         Estado estado = new Estado();
-                        estado.Id = int.Parse(dataReader["id"].ToString());
+                        estado.Id = int.Parse(dataReader["idestado"].ToString());
                         estado.Nombre = dataReader["nombre"].ToString();
 
                         estados.Add(estado);

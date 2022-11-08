@@ -1,5 +1,4 @@
-﻿using Noviembre.Core.Entidades;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -7,14 +6,12 @@ using System.Web.Mvc;
 
 namespace noviembre.web.Controllers
 {
-    public class EstadoController : Controller
+    public class ModuloController : Controller
     {
-        // GET: Estado
+        // GET: Modulo
         public ActionResult Index()
         {
-            List<Estado> estados = Estado.GetAll();
             return View();
-            return View(estados);
         }
     }
 }
