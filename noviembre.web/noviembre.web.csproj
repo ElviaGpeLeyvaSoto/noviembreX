@@ -215,6 +215,7 @@
     <Content Include="Views\Home\Bienvenida.cshtml" />
     <Content Include="Views\Usuario\Index.cshtml" />
     <Content Include="Views\Estado\Index.cshtml" />
+    <Content Include="Views\Estado\Registro.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

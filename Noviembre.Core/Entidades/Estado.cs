@@ -43,5 +43,61 @@ namespace Noviembre.Core.Entidades
             }
             return estados;
         }
+
+        public bool Editar(int id, string nombre)
+        {
+            bool result = false;
+            try
+            {
+                Conexion conexion = new Conexion();
+                if (conexion.OpenConnection())
+                {
+                    MySqlCommand cmd = conexion.connection.CreateCommand();
+                    cmd.CommandText = "UPDATE estado SET nombre = @nombre WHERE id = @id ";
+                    cmd.Parameters.AddWithValue("@id", id);
+                    cmd.Parameters.AddWithValue("@nombre", nombre);
+
+                    result = cmd.ExecuteNonQuery() == 1;
+                    
+                    /*MySqlDataAdapter mySqlDataAdapter = ;
+                    while ()
+                    {
+
+                    }*/
+
+                    
+                }
+            }catch(Exception ex)
+            {
+                throw ex;
+            }
+
+            return result;
+        }
+        public static bool Guardar(string nombre)
+        {
+            bool result = false;
+            try
+            {
+                Conexion conexion = new Conexion();
+                if (conexion.OpenConnection())
+                {
+                    MySqlCommand cmd = conexion.connection.CreateCommand();
+                    cmd.CommandText = "INSERT INTO estado (nombre) VALUES (@nombre)";
+                    
+                    cmd.Parameters.AddWithValue("@nombre", nombre);
+
+                    result = cmd.ExecuteNonQuery() == 1;
+
+
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return result;
+        }
     }
 }
