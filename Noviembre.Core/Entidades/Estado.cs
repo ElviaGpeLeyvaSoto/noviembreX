@@ -13,6 +13,34 @@ namespace Noviembre.Core.Entidades
         public int Id { get; set; }
         public string Nombre { get; set; }
 
+        public static Estado GetById(int id)
+        {
+            Estado estado = new Estado();
+            try
+            {
+                Conexion conexion = new Conexion();
+                if (conexion.OpenConnection())
+                {
+                    string query = "SELECT idestado, nombre FROM Estado WHERE id = @idestado";
+
+                    MySqlCommand cmd = new MySqlCommand(query, conexion.connection);
+                    cmd.Parameters.AddWithValue("@idestado", id);
+
+                    MySqlDataReader dataReader= cmd.ExecuteReader();
+                    while (dataReader.Read())
+                    {
+                        estado.Id = int.Parse(dataReader["idestado"].ToString());
+                        estado.Nombre = dataReader["nombre"].ToString();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            return estado;
+        }
         public static List<Estado> GetAll()
         {
             List<Estado> estados = new List<Estado>();
