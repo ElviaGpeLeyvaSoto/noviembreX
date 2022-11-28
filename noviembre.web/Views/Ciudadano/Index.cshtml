@@ -2,13 +2,14 @@
 @{
     ViewBag.Title = "Index";
 }
+
 @using Noviembre.Core.Entidades
-@model List<Estado>
+@model List<Ciudadano>
 <div id="page-wrapper">
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">Estados</h1>
+                <h1 class="page-header">Ciudadanos</h1>
             </div>
         </div>
 
@@ -18,25 +19,45 @@
                 <div class="panel panel-default">
                     <div class="panel-body">
 
-                        <a href="@Url.Action("Registro","Estado",new {id = 0})"class="btn btn-primary">Agregar nuevo</a>
+                        <a href="@Url.Action("Registro","Ciudadano",new {id = 0})" class="btn btn-primary">Agregar nuevo</a>
 
                         <div class="table-responsive">
                             <table class="table table-striped">
                                 <thead>
                                     <tr>
                                         <th>Nombre</th>
+                                        <th>Apellido_Paterno</th>
+                                        <th>Apellido_Materno</th>
+                                        <th>Telefono</th>
+                                        <th>Direccion</th>
+                                        <th>Email</th>
                                         <th>Acciones</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach (Estado e in Model)
+                                    @foreach (Ciudadano e in Model)
                                     {
                                         <tr>
                                             <td>
                                                 @e.Nombre
                                             </td>
                                             <td>
-                                                <a href="@Url.Action("Edit","Estado",new {id = e.Id})" class="btn btn-primary">Editar</a>
+                                                @e.ApellidoPaterno
+                                            </td>
+                                            <td>
+                                                @e.ApellidoMaterno
+                                            </td>
+                                            <td>
+                                                @e.Telefono
+                                            </td>
+                                            <td>
+                                                @e.Direccion
+                                            </td>
+                                            <td>
+                                                @e.Email
+                                            </td>
+                                            <td>
+                                                <a href="@Url.Action("Edit","Ciudadano",new {id = e.Id})" class="btn btn-primary">Editar</a>
                                                 <a class=" btn btn-danger">Eliminar</a>
                                             </td>
                                         </tr>
@@ -52,3 +73,4 @@
         </div>
     </div>
 </div>
+

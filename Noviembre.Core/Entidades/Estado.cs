@@ -21,15 +21,15 @@ namespace Noviembre.Core.Entidades
                 Conexion conexion = new Conexion();
                 if (conexion.OpenConnection())
                 {
-                    string query = "SELECT idestado, nombre FROM Estado WHERE id = @idestado";
+                    string query = "SELECT id, nombre FROM Estado WHERE id = @id";
 
                     MySqlCommand cmd = new MySqlCommand(query, conexion.connection);
-                    cmd.Parameters.AddWithValue("@idestado", id);
+                    cmd.Parameters.AddWithValue("@id", id);
 
                     MySqlDataReader dataReader= cmd.ExecuteReader();
                     while (dataReader.Read())
                     {
-                        estado.Id = int.Parse(dataReader["idestado"].ToString());
+                        estado.Id = int.Parse(dataReader["id"].ToString());
                         estado.Nombre = dataReader["nombre"].ToString();
                     }
                 }
@@ -49,7 +49,7 @@ namespace Noviembre.Core.Entidades
                 Conexion conexion = new Conexion();
                 if (conexion.OpenConnection())
                 {
-                    string query = "SELECT idestado, nombre FROM estado;";
+                    string query = "SELECT id, nombre FROM estado;";
 
                     MySqlCommand command = new MySqlCommand(query, conexion.connection);
 
@@ -57,7 +57,7 @@ namespace Noviembre.Core.Entidades
                     while (dataReader.Read())
                     {
                         Estado estado = new Estado();
-                        estado.Id = int.Parse(dataReader["idestado"].ToString());
+                        estado.Id = int.Parse(dataReader["id"].ToString());
                         estado.Nombre = dataReader["nombre"].ToString();
 
                         estados.Add(estado);

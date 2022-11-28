@@ -216,11 +216,14 @@
     <Content Include="Views\Usuario\Index.cshtml" />
     <Content Include="Views\Estado\Index.cshtml" />
     <Content Include="Views\Estado\Registro.cshtml" />
+    <Content Include="Views\Ciudadano\Index.cshtml" />
+    <Content Include="Views\Ciudadano\Registro.cshtml" />
+    <Content Include="Views\Estado\Edit.cshtml" />
+    <Content Include="Views\Ciudadano\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
-    <Folder Include="Views\Ciudadano\" />
     <Folder Include="Views\ComprobanteDomicilio\" />
     <Folder Include="Views\DocumentoNacionalidad\" />
     <Folder Include="Views\Modulo\" />

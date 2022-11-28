@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Noviembre.Core.Entidades;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,7 +12,20 @@ namespace noviembre.web.Controllers
         // GET: Ciudadano
         public ActionResult Index()
         {
-            return View();
+            List<Ciudadano> ciudadanos = Ciudadano.GetAll();
+            return View(ciudadanos);
+            
+        }
+        public ActionResult Registro(int id)
+        {
+            Ciudadano ciudadano = Ciudadano.GetById(id);
+            return View(ciudadano);
+        }
+        public ActionResult Guardar(string nombre, string apellidoPaterno, string apellidoMaterno, string direccion, string telefono, string email)
+        {
+            Ciudadano.Guardar(nombre, apellidoPaterno, apellidoMaterno, telefono, direccion, email);
+
+            return RedirectToAction("Index");
         }
     }
 }
