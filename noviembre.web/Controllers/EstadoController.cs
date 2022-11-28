@@ -19,9 +19,9 @@ namespace noviembre.web.Controllers
             Estado estado = Estado.GetById(id);
             return View(estado);
         }
-        public ActionResult Guardar(string nombre)
+        public ActionResult Guardar(int id, string nombre)
         {
-            Estado.Guardar(nombre);
+            Estado.Guardar(id, nombre);
             return RedirectToAction("Index");
         }
     }

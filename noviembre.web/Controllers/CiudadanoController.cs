@@ -21,9 +21,9 @@ namespace noviembre.web.Controllers
             Ciudadano ciudadano = Ciudadano.GetById(id);
             return View(ciudadano);
         }
-        public ActionResult Guardar(string nombre, string apellidoPaterno, string apellidoMaterno, string direccion, string telefono, string email)
+        public ActionResult Guardar(int id,string nombre, string apellidoPaterno, string apellidoMaterno,string telefono , string direccion, string email)
         {
-            Ciudadano.Guardar(nombre, apellidoPaterno, apellidoMaterno, telefono, direccion, email);
+            Ciudadano.Guardar(id,nombre, apellidoPaterno, apellidoMaterno, telefono, direccion, email);
 
             return RedirectToAction("Index");
         }

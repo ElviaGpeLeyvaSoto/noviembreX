@@ -123,7 +123,7 @@ namespace Noviembre.Core.Entidades
 
             return result;
         }
-        public static bool Guardar(string nombre, string apellidoPaterno, string apellidoMaterno, string direccion, string telefono, string email)
+        public static bool Guardar(int id,string nombre, string apellidoPaterno, string apellidoMaterno, string direccion, string telefono, string email)
         {
             bool result = false;
             try
@@ -132,16 +132,30 @@ namespace Noviembre.Core.Entidades
                 if (conexion.OpenConnection())
                 {
                     MySqlCommand cmd = conexion.connection.CreateCommand();
-                    cmd.CommandText = "INSERT INTO ciudadano (nombre, apellidoPaterno, apellidoMaterno, telefono, direccion, email) VALUES ( @nombre, @apellidoPaterno, @apellidoMaterno, @telefono, @direccion, @email);";
+                    
+                    
+                    if (id == 0)
+                    {
+                        cmd.CommandText = "INSERT INTO ciudadano (nombre, apellidoPaterno, apellidoMaterno, telefono, direccion, email) VALUES ( @nombre, @apellidoPaterno, @apellidoMaterno, @telefono, @direccion, @email);";
+                        cmd.Parameters.AddWithValue("@nombre", nombre);
+                        cmd.Parameters.AddWithValue("@apellidoPaterno", apellidoPaterno);
+                        cmd.Parameters.AddWithValue("@apellidoMaterno", apellidoMaterno);
+                        cmd.Parameters.AddWithValue("@telefono", telefono);
+                        cmd.Parameters.AddWithValue("@direccion", direccion);
+                        cmd.Parameters.AddWithValue("@email", email);
+                    }
+                    else
+                    {
 
-                    cmd.Parameters.AddWithValue("@nombre", nombre);
-                    cmd.Parameters.AddWithValue("@apellidoPaterno", apellidoPaterno);
-                    cmd.Parameters.AddWithValue("@apellidoMaterno", apellidoMaterno);
-                    cmd.Parameters.AddWithValue("@telefono", telefono);
-                    cmd.Parameters.AddWithValue("@direccion", direccion);
-                    cmd.Parameters.AddWithValue("@email", email);
+                        cmd.CommandText = "UPDATE estado SET nombre = @nombre WHERE id = @id";
+                        cmd.Parameters.AddWithValue("@nombre", nombre);
+                        cmd.Parameters.AddWithValue("@apellidoPaterno", apellidoPaterno);
+                        cmd.Parameters.AddWithValue("@apellidoMaterno", apellidoMaterno);
+                        cmd.Parameters.AddWithValue("@telefono", telefono);
+                        cmd.Parameters.AddWithValue("@direccion", direccion);
+                        cmd.Parameters.AddWithValue("@email", email);
 
-
+                    }
                     result = cmd.ExecuteNonQuery() == 1;
 
 

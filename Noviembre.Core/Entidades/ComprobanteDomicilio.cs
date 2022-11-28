@@ -44,5 +44,35 @@ namespace Noviembre.Core.Entidades
             }
             return comprobantes;
         }
+        public static Estado GetById(int id)
+        {
+            Estado estado = new Estado();
+            try
+            {
+                Conexion conexion = new Conexion();
+                if (conexion.OpenConnection())
+                {
+                    string query = "SELECT id, nombre FROM Estado WHERE id = @id";
+
+                    MySqlCommand cmd = new MySqlCommand(query, conexion.connection);
+                    cmd.Parameters.AddWithValue("@id", id);
+
+                    MySqlDataReader dataReader = cmd.ExecuteReader();
+                    while (dataReader.Read())
+                    {
+                        estado.Id = int.Parse(dataReader["id"].ToString());
+                        estado.Nombre = dataReader["nombre"].ToString();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            return estado;
+        }
+
+
     }
 }

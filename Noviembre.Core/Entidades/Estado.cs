@@ -26,7 +26,7 @@ namespace Noviembre.Core.Entidades
                     MySqlCommand cmd = new MySqlCommand(query, conexion.connection);
                     cmd.Parameters.AddWithValue("@id", id);
 
-                    MySqlDataReader dataReader= cmd.ExecuteReader();
+                    MySqlDataReader dataReader = cmd.ExecuteReader();
                     while (dataReader.Read())
                     {
                         estado.Id = int.Parse(dataReader["id"].ToString());
@@ -65,7 +65,7 @@ namespace Noviembre.Core.Entidades
                     dataReader.Close();
                     conexion.CloseConnection();
                 }
-            }catch(Exception ex)
+            } catch (Exception ex)
             {
                 throw ex;
             }
@@ -86,23 +86,23 @@ namespace Noviembre.Core.Entidades
                     cmd.Parameters.AddWithValue("@nombre", nombre);
 
                     result = cmd.ExecuteNonQuery() == 1;
-                    
+
                     /*MySqlDataAdapter mySqlDataAdapter = ;
                     while ()
                     {
 
                     }*/
 
-                    
+
                 }
-            }catch(Exception ex)
+            } catch (Exception ex)
             {
                 throw ex;
             }
 
             return result;
         }
-        public static bool Guardar(string nombre)
+        public static bool Guardar(int id, string nombre)
         {
             bool result = false;
             try
@@ -111,11 +111,23 @@ namespace Noviembre.Core.Entidades
                 if (conexion.OpenConnection())
                 {
                     MySqlCommand cmd = conexion.connection.CreateCommand();
-                    cmd.CommandText = "INSERT INTO estado (nombre) VALUES (@nombre)";
-                    
-                    cmd.Parameters.AddWithValue("@nombre", nombre);
+                    if (id == 0)
+                    {
 
+                        cmd.CommandText = "INSERT INTO estado (nombre) VALUES (@nombre)";
+                        cmd.Parameters.AddWithValue("@nombre", nombre);
+
+                    }
+                    else
+                    {
+
+                        cmd.CommandText = "UPDATE estado SET nombre = @nombre WHERE id = @id";
+                        cmd.Parameters.AddWithValue("@id", id);
+                        cmd.Parameters.AddWithValue("@nombre", nombre);
+
+                    }
                     result = cmd.ExecuteNonQuery() == 1;
+
 
 
                 }
@@ -127,5 +139,6 @@ namespace Noviembre.Core.Entidades
 
             return result;
         }
+    
     }
 }
