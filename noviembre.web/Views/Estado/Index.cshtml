@@ -37,7 +37,7 @@
                                             </td>
                                             <td>
                                                 <a href="@Url.Action("Registro","Estado",new {id = e.Id})" class="btn btn-primary">Editar</a>
-                                                <a class=" btn btn-danger">Eliminar</a>
+                                                <a onclick="eliminar(@e.Id)" class=" btn btn-danger">Eliminar</a>
                                             </td>
                                         </tr>
                                     }
@@ -52,3 +52,5 @@
         </div>
     </div>
 </div>
+
+<script src="~/Content/js/noviembre/estado.js"></script>

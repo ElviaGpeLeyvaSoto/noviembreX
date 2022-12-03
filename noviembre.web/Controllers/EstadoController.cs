@@ -24,5 +24,10 @@ namespace noviembre.web.Controllers
             Estado.Guardar(id, nombre);
             return RedirectToAction("Index");
         }
+        public ActionResult Eliminar(int id)
+        {
+            Estado.Eliminar(id);
+            return RedirectToAction("Index");
+        }
     }
 }

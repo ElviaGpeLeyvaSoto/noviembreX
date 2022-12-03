@@ -147,7 +147,7 @@ namespace Noviembre.Core.Entidades
                     else
                     {
 
-                        cmd.CommandText = "UPDATE estado SET nombre = @nombre WHERE id = @id";
+                        cmd.CommandText = "UPDATE estado SET nombre = @nombre  WHERE id = @id";
                         cmd.Parameters.AddWithValue("@nombre", nombre);
                         cmd.Parameters.AddWithValue("@apellidoPaterno", apellidoPaterno);
                         cmd.Parameters.AddWithValue("@apellidoMaterno", apellidoMaterno);

@@ -173,6 +173,7 @@
     <Content Include="Content\js\metisMenu.min.js" />
     <Content Include="Content\js\morris-data.js" />
     <Content Include="Content\js\morris.min.js" />
+    <Content Include="Content\js\noviembre\estado.js" />
     <Content Include="Content\js\raphael.min.js" />
     <Content Include="Content\js\startmin.js" />
     <Content Include="favicon.ico" />
